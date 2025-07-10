@@ -1,0 +1,9 @@
+stages:
+  heatmap:
+    cmd: python detector.py uploads/9e0bba8f-aad7-4e06-84d1-bc0499d43527.mp4 uploads/18a14513-316e-413b-8669-a9462ede0b26.json
+    deps:
+      - detector.py
+      - uploads/9e0bba8f-aad7-4e06-84d1-bc0499d43527.mp4
+      - uploads/18a14513-316e-413b-8669-a9462ede0b26.json
+    outs:
+      - static/results/output_with_heatmap_and_countsf.mp4

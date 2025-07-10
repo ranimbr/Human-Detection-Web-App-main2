@@ -1,0 +1,200 @@
+/* static/css/result.css */
+
+:root {
+    /* Base Dark Theme */
+    --dark-bg: #0e0a1f;
+    --dark-secondary: #1b1438;
+    --dark-text-primary: #e3e8ff;
+    --dark-text-secondary: #aab1dd;
+
+    /* Base Light Theme */
+    --light-bg: #f3f4fc;
+    --light-secondary: #d6d9f0;
+    --light-text-primary: #12122b;
+    --light-text-secondary: #3d3a73;
+
+    /* Accent Color */
+    --accent-color: #8b79d8; /* Bleu-violet doux et pro */
+
+    /* Transitions */
+    --transition-duration: 0.4s;
+    --animation-duration: 0.4s;
+}
+
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* Apple website font stack */
+    background-color: var(--dark-bg);
+    color: var(--dark-text-primary);
+    margin: 0;
+    padding: 3rem;
+    line-height: 1.8;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    justify-content: flex-start; /* Align items at the top initially */
+    min-height: 100vh;
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+
+header {
+    background-color: var(--dark-secondary);
+    color: var(--dark-text-primary);
+    padding: 1.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    width: 80%; /* Match container width */
+    max-width: 960px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    letter-spacing: 0.5px;
+    text-align: left; /* Align header text to the left */
+}
+
+header button {
+    background-color: var(--accent-color);
+    color: var(--dark-secondary);
+    border: none;
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+
+header button:hover {
+    background-color: #9f91d4;
+    color: var(--dark-bg);
+}
+
+.container {
+    width: 80%; /* Adjust as needed */
+    max-width: 960px; /* Maximum width for the content */
+    margin-top: 2rem; /* Adjust top margin */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items within the container */
+}
+
+h1, h2, h3, p {
+    text-align: center;
+    color: var(--dark-text-primary);
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.detection-results-button,
+.button-style {
+    background-color: var(--accent-color);
+    color: var(--dark-secondary);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+    margin-top: 1rem; /* Add some top margin for spacing */
+    display: inline-block; /* Or block if you want them on separate lines */
+}
+
+.detection-results-button {
+    margin-bottom: 1.5rem; /* Add some space below the show details button */
+}
+
+.detection-results-button:hover,
+.button-style:hover {
+    background-color: #9e91d4;
+    color: var(--dark-bg);
+}
+
+.detection-details-container {
+    background-color: var(--dark-secondary);
+    color: var(--dark-text-primary);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    margin-top: 1.5rem;
+    width: 100%; /* Increased width to 100% of its container */
+    max-width: 1050px; /* Increased max-width for 1.5x effect (approx.) */
+    text-align: left; /* Left align the text within the container */
+    overflow-x: auto; /* For long lines of text */
+    white-space: pre-wrap; /* Preserve formatting and wrap lines */
+    display: none; /* Hidden by default */
+}
+
+.detection-details-container h3 {
+    text-align: left; /* Changed text-align to left */
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.detection-details-container .download-details-button {
+    text-align: left; /* Align the button to the left */
+    font-size: 0.7em; /* Reduce the font size to 0.7 times */
+    transform: translateX(0); /* Reset any previous transform */
+    margin-left: 0; /* Reset any potential margin */
+}
+
+.detection-details-container .download-details-button:hover {
+    /* You might want to adjust the hover effect for the smaller button */
+}
+
+/* Light Theme for Result Page */
+body.light-theme {
+    background-color: var(--light-bg);
+    color: var(--light-text-primary);
+}
+
+body.light-theme header {
+    background-color: var(--light-secondary);
+    color: var(--light-text-primary);
+}
+
+body.light-theme header button {
+    background-color: var(--light-text-secondary);
+    color: var(--light-text-primary);
+}
+
+body.light-theme header button:hover {
+    background-color: #b296c1;
+    color: var(--light-text-primary);
+}
+
+body.light-theme h1,
+body.light-theme h2,
+body.light-theme h3,
+body.light-theme p {
+    color: var(--light-text-primary);
+}
+
+body.light-theme .detection-results-button,
+body.light-theme .button-style {
+    background-color: var(--light-text-secondary);
+    color: var(--light-text-primary);
+}
+
+body.light-theme .detection-results-button:hover,
+body.light-theme .button-style:hover {
+    background-color: #9697c1;
+    color: var(--light-text-primary);
+}
+
+body.light-theme .detection-details-container {
+    background-color: var(--light-secondary);
+    color: var(--light-text-primary);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

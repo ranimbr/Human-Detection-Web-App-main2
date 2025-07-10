@@ -1,0 +1,14 @@
+artifact_uri: mlflow-artifacts:/0/f6c9cbd479814ecaa75ce94581e4ecf5/artifacts
+end_time: 1752181431608
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: f6c9cbd479814ecaa75ce94581e4ecf5
+run_name: melodic-lamb-321
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1752181344373
+status: 3
+tags: []
+user_id: ranim

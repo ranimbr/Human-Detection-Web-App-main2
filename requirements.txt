@@ -1,0 +1,9 @@
+flask
+imutils
+opencv-python
+numpy
+matplotlib
+ultralytics
+shapely
+tqdm
+mlflow

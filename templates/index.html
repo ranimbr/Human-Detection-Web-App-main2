@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOLO Object Detection</title>
+    <link rel="stylesheet" href="static/css/index.css">
+</head>
+<body>
+    <header>
+        <h1>YOLO Object Detection</h1>
+        <button id="theme-toggle">Toggle Light Theme</button>
+    </header>
+
+    <main class="detection-carousel">
+        <div class="card" data-index="0">
+            <h2>Detect Objects in Image</h2>
+            <form method="POST" action="/upload_image" enctype="multipart/form-data">
+                <label for="image">Upload an image:</label>
+                <input type="file" id="image" name="image" title="Choose an image file to upload" required>
+                <button type="submit">Detect Image</button>
+            </form>
+        </div>
+
+        <div class="card" data-index="1">
+            <h2>Detect Objects in Video</h2>
+            <form method="POST" action="/upload_video" enctype="multipart/form-data">
+                <label for="video">Upload a video:</label>
+                <input type="file" id="video" name="video" title="Choose a video file to upload" required>
+                <input type="file" name="json" required>
+                <button type="submit">Detect Video</button>
+            </form>
+        </div>
+
+        <div class="card" data-index="2">
+            <h2>Live Webcam Detection</h2>
+            <p><a href="/webcam" class="button">Start Detection</a></p>
+        </div>
+    </main>
+
+    <div class="carousel-navigation">
+        <button id="prev-card">Previous</button>
+        <button id="next-card">Next</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 YOLO Object Detection</p>
+    </footer>
+    <script src="static/js/index.js"></script>
+</body>
+</html>

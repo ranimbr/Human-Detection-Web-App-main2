@@ -1,0 +1,300 @@
+/* static/css/index.css */
+
+:root {
+    /* Base Dark Theme */
+    --dark-bg: #0e0a1f;
+    --dark-secondary: #1b1438;
+    --dark-text-primary: #e3e8ff;
+    --dark-text-secondary: #aab1dd;
+
+    /* Base Light Theme */
+    --light-bg: #f3f4fc;
+    --light-secondary: #d6d9f0;
+    --light-text-primary: #12122b;
+    --light-text-secondary: #3d3a73;
+
+    /* Accent Color */
+    --accent-color: #8b79d8; /* Bleu-violet doux et pro */
+
+    /* Transitions */
+    --transition-duration: 0.4s;
+    --animation-duration: 0.4s;
+}
+
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--dark-bg);
+    color: var(--dark-text-primary);
+    margin: 0;
+    padding: 3rem;
+    line-height: 1.8;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+
+header {
+    background-color: var(--dark-secondary);
+    color: var(--dark-text-primary);
+    padding: 1.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    letter-spacing: 0.5px;
+}
+
+header button {
+    background-color: var(--accent-color);
+    color: var(--dark-secondary);
+    border: none;
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+
+header button:hover {
+    background-color: #a591d4;
+    color: var(--dark-bg);
+}
+
+main.detection-carousel {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    position: relative; /* Keep position relative for card positioning */
+    overflow: hidden;
+    margin-bottom: 25px; /* Increased margin-bottom to 25px */
+}
+
+.card {
+    background-color: var(--dark-secondary);
+    color: var(--dark-text-primary);
+    border-radius: 12px; /* Ensure this line is present */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    width: 400px;
+    opacity: 0.6;
+    filter: blur(5px);
+    transition: opacity var(--transition-duration), filter var(--transition-duration), transform var(--transition-duration);
+    position: absolute;
+    cursor: default; /* No click interaction on blurred cards */
+    pointer-events: none;
+}
+
+.card[data-index="0"] {
+    left: 50%;
+    transform: translateX(-50%) scale(1); /* Full size initially */
+    opacity: 1;
+    filter: blur(0);
+    z-index: 2;
+    pointer-events: auto;
+}
+
+.card[data-index="1"] {
+    left: 50%;
+    transform: translateX(calc(-50% - 420px)) scale(0.7); /* 70% size on left */
+}
+
+.card[data-index="2"] {
+    left: 50%;
+    transform: translateX(calc(-50% + 420px)) scale(0.7); /* 70% size on right */
+}
+
+.card.shifted-left {
+    transform: translateX(calc(-50% - 420px)) scale(0.7);
+    opacity: 0.6;
+    filter: blur(5px);
+    pointer-events: auto;
+}
+
+.card.shifted-right {
+    transform: translateX(calc(-50% + 420px)) scale(0.7);
+    opacity: 0.6;
+    filter: blur(5px);
+    pointer-events: auto;
+}
+
+.card.active {
+    transform: translateX(-50%) scale(1.05); /* Revert to slightly larger scale */
+    opacity: 1;
+    filter: blur(0);
+    z-index: 2;
+    pointer-events: auto;
+}
+
+.card h2 {
+    margin-top: 0;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.card form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.card label {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--dark-text-secondary);
+}
+
+.card input[type="file"] {
+    padding: 0.7rem;
+    border: 1px solid var(--dark-text-secondary);
+    border-radius: 6px;
+    background-color: var(--dark-bg);
+    color: var(--dark-text-primary);
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.card button[type="submit"],
+.card p a.button {
+    background-color: var(--accent-color);
+    color: var(--dark-secondary);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+
+.card button[type="submit"]:hover,
+.card p a.button:hover {
+    background-color: #b591d4;
+    color: var(--dark-bg);
+}
+
+.card p {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.carousel-navigation {
+    display: flex;
+    justify-content: center; /* Center the buttons */
+    gap: 1rem;
+    margin-bottom: 20px; /* Add margin-bottom to create space above footer */
+}
+
+.carousel-navigation button {
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly whitish background */
+    color: rgba(255, 255, 255, 0.8); /* Slightly whitish text */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+    padding: 0.7rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color var(--transition-duration), color var(--transition-duration), border-color var(--transition-duration);
+}
+
+.carousel-navigation button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border-color: white;
+}
+
+footer {
+    background-color: var(--dark-secondary);
+    color: var(--dark-text-secondary);
+    text-align: center;
+    padding: 1.5rem 0;
+    border-radius: 10px 10px 0 0;
+    margin-top: 0; /* Remove margin-top as spacing is handled above */
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
+}
+
+footer p {
+    font-size: 0.9rem;
+}
+
+/* Light Theme Styles (Adjusted) */
+body.light-theme {
+    background-color: var(--light-bg);
+    color: var(--light-text-primary);
+}
+
+body.light-theme header {
+    background-color: var(--light-secondary);
+    color: var(--light-text-primary);
+}
+
+body.light-theme header button {
+    background-color: var(--light-text-secondary);
+    color: var(--light-text-primary);
+}
+
+body.light-theme header button:hover {
+    background-color: #a696c1;
+    color: var(--light-text-primary);
+}
+
+body.light-theme main.detection-carousel .card {
+    background-color: var(--light-secondary);
+    color: var(--light-text-primary);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme main.detection-carousel .card label {
+    color: var(--light-text-secondary);
+}
+
+body.light-theme main.detection-carousel .card input[type="file"] {
+    border-color: var(--light-text-secondary);
+    background-color: var(--light-bg);
+    color: var(--light-text-primary);
+}
+
+body.light-theme main.detection-carousel .card button[type="submit"],
+body.light-theme main.detection-carousel .card p a.button {
+    background-color: var(--light-text-secondary);
+    color: var(--light-text-primary);
+}
+
+body.light-theme main.detection-carousel .card button[type="submit"]:hover,
+body.light-theme main.detection-carousel .card p a.button:hover {
+    background-color: #a196c1;
+    color: var(--light-text-primary);
+}
+
+body.light-theme .carousel-navigation button {
+    background-color: var(--light-secondary);
+    color: var(--light-text-primary);
+    border-color: var(--light-secondary);
+}
+
+body.light-theme .carousel-navigation button:hover {
+    background-color: var(--light-text-secondary);
+    color: var(--light-text-primary);
+    border-color: var(--light-text-secondary);
+}
+
+body.light-theme footer {
+    background-color: var(--light-secondary);
+    color: var(--light-text-secondary);
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detection Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/result.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Detection Results</h1>
+            <button id="theme-toggle">Toggle Light Theme</button>
+        </header>
+
+        {% if input_type == 'image' %}
+            <h2>Detection Complete</h2>
+            {% if detected_image_bytes %}
+                <div style="text-align: center;">
+                    <a href="data:image/jpeg;base64,{{ detected_image_bytes }}" download="{{ original_filename }}" class="button-style">Download Detected Image</a>
+                </div>
+            {% else %}
+                <p>No image to display.</p>
+            {% endif %}
+
+            {% if detection_details %}
+                <button class="detection-results-button" id="show-results-button">Show Detection Details</button>
+                <div class="detection-details-container" id="detection-details-container" style="display: none;">
+                    <h3>Detection Details</h3>
+                    <pre>{{ detection_details }}</pre>
+                    <a href="data:text/plain;charset=utf-8,{{ detection_details|urlencode }}" download="{{ original_filename.rsplit('.', 1)[0] }}_detection_results.txt" class="button-style download-details-button">Download Detection Details</a>
+                </div>
+            {% else %}
+                <p>No objects detected.</p>
+            {% endif %}
+
+        {% elif input_type == 'video' %}
+            <h2>Detection Complete</h2>
+
+            {% if video_path %}
+                <div style="text-align: center;">
+                    <video controls width="640" src="{{ url_for('static', filename=video_path) }}"></video>
+                    <br>
+                    <a href="{{ url_for('static', filename=video_path) }}" download="{{ original_filename.rsplit('.', 1)[0] }}_detected.mp4" class="button-style">Download Detected Video</a>
+                </div>
+            {% else %}
+                <p>No video to download.</p>
+            {% endif %}
+
+            <button class="detection-results-button" id="show-results-button">Show Detection Details</button>
+
+            <div class="detection-details-container" id="detection-details-container" style="display: none;">
+                <h3>Visual Detection Results</h3>
+                <ul>
+                    <li>📸 <strong>Last Frame with Heatmap</strong></li>
+                    <img src="{{ url_for('static', filename='results/last_frame_with_heatmap.png') }}" alt="Last Frame" width="640">
+                    <a href="{{ url_for('static', filename='results/last_frame_with_heatmap.png') }}" download class="button-style">Download Image</a>
+
+                    <li>🔥 <strong>Cumulative Heatmap (masked)</strong></li>
+                    <img src="{{ url_for('static', filename='results/heatmap_cumulative_maskedf.png') }}" alt="Cumulative Heatmap" width="640">
+                    <a href="{{ url_for('static', filename='results/heatmap_cumulative_maskedf.png') }}" download class="button-style">Download Image</a>
+
+                    <li>📈 <strong>Zone Count Evolution</strong></li>
+                    <img src="{{ url_for('static', filename='results/zone_counts_evolutionf.png') }}" alt="Zone Count Evolution" width="640">
+                    <a href="{{ url_for('static', filename='results/zone_counts_evolutionf.png') }}" download class="button-style">Download Image</a>
+                </ul>
+            </div>
+
+        {% elif input_type == 'webcam' %}
+            <h2>Webcam Detection Output</h2>
+            {% if video_bytes %}
+                <div style="text-align: center;">
+                    <a href="data:video/mp4;base64,{{ video_bytes }}" download="webcam_detected.mp4" class="button-style">Download Webcam Output</a>
+                </div>
+            {% else %}
+                <p>No webcam output to display.</p>
+            {% endif %}
+
+            {% if detection_details %}
+                <button class="detection-results-button" id="show-results-button">Show Detection Details</button>
+                <div class="detection-details-container" id="detection-details-container" style="display: none;">
+                    <h3>Detection Details</h3>
+                    <pre>{{ detection_details }}</pre>
+                    <a href="data:text/plain;charset=utf-8,{{ detection_details|urlencode }}" download="webcam_detection_results.txt" class="button-style download-details-button">Download Detection Details</a>
+                </div>
+            {% endif %}
+        {% endif %}
+
+        <a href="/" class="button-style">Go Back</a>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/result.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+artifact_uri: mlflow-artifacts:/0/5dcffa89c020492a99dbc2cd3d2bf89a/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 5dcffa89c020492a99dbc2cd3d2bf89a
+run_name: nosy-hog-547
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1752186453470
+status: 1
+tags: []
+user_id: ranim

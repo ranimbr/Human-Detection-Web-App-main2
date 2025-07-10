@@ -1,0 +1,14 @@
+artifact_uri: mlflow-artifacts:/0/ec4091a9e2c94376baea5ba2a5f9f5f9/artifacts
+end_time: 1752184054647
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: ec4091a9e2c94376baea5ba2a5f9f5f9
+run_name: grandiose-skunk-673
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1752183969876
+status: 3
+tags: []
+user_id: ranim

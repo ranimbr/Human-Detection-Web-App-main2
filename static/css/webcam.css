@@ -1,0 +1,162 @@
+/* static/css/webcam.css */
+
+:root {
+    --dark-bg: #000000;
+    --dark-secondary: #1E1E1E;
+    --dark-text-primary: #FEF9E1;
+    --dark-text-secondary: #E5D0AC;
+    --light-bg: #FEF9E1;
+    --light-secondary: #E5D0AC;
+    --light-text-primary: #000000;
+    --light-text-secondary: #6D2323;
+    --accent-color: #E5D0AC;
+    --transition-duration: 0.4s;
+    --animation-duration: 0.4s;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: var(--dark-bg);
+    color: var(--dark-text-primary);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    justify-content: center; /* Center content vertically */
+    min-height: 100vh;
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+
+header {
+    background-color: var(--dark-secondary);
+    color: var(--dark-text-primary);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    width: 80%; /* Adjust as needed */
+    max-width: 600px; /* Adjust as needed */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+header button {
+    background-color: var(--accent-color);
+    color: var(--dark-secondary);
+    border: none;
+    padding: 0.5rem 0.8rem;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+
+header button:hover {
+    background-color: #D4B991;
+    color: var(--dark-bg);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+#videoElement {
+    width: 416px;
+    height: 416px;
+    border: 1px solid var(--dark-text-secondary);
+    background-color: black; /* To show something before the stream starts */
+}
+
+#canvasElement {
+    width: 416px;
+    height: 416px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid red; /* For debugging, you can remove this */
+    z-index: 10;
+}
+
+#controls button {
+    background-color: var(--accent-color);
+    color: var(--dark-secondary);
+    border: none;
+    padding: 0.7rem 1.2rem;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0 0.5rem;
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+
+#controls button:disabled {
+    background-color: #777;
+    cursor: not-allowed;
+    color: #333;
+}
+
+#controls button:hover:enabled {
+    background-color: #D4B991;
+    color: var(--dark-bg);
+}
+
+#output {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+/* Light Theme */
+body.light-theme {
+    background-color: var(--light-bg);
+    color: var(--light-text-primary);
+}
+
+body.light-theme header {
+    background-color: var(--light-secondary);
+    color: var(--light-text-primary);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme header h1 {
+    color: var(--light-text-primary);
+}
+
+body.light-theme header button {
+    background-color: var(--light-text-secondary);
+    color: var(--light-text-primary);
+}
+
+body.light-theme header button:hover {
+    background-color: #C1B396;
+    color: var(--light-text-primary);
+}
+
+body.light-theme #videoElement {
+    border-color: var(--light-text-secondary);
+}
+
+body.light-theme #controls button {
+    background-color: var(--light-text-secondary);
+    color: var(--light-text-primary);
+}
+
+body.light-theme #controls button:hover:enabled {
+    background-color: #C1B396;
+    color: var(--light-text-primary);
+}
+
+body.light-theme #output {
+    color: var(--light-text-primary);
+}
