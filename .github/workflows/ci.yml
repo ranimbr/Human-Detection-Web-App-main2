@@ -18,7 +18,14 @@ jobs:
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
-        pip install pytest
+        pip install pytest mlflow
+
+    - name: Start MLflow server
+      run: |
+        nohup mlflow server --backend-store-uri sqlite:///mlflow.db \
+                            --default-artifact-root ./mlartifacts \
+                            --host 127.0.0.1 --port 5001 &
+        sleep 5
 
     - name: Run tests
       run: pytest tests/
