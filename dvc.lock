@@ -1,0 +1,23 @@
+schema: '2.0'
+stages:
+  heatmap:
+    cmd: python detector.py uploads/9e0bba8f-aad7-4e06-84d1-bc0499d43527.mp4 
+      uploads/18a14513-316e-413b-8669-a9462ede0b26.json
+    deps:
+    - path: detector.py
+      hash: md5
+      md5: 350522067091f5c2c31809ba20f53e22
+      size: 6000
+    - path: uploads/18a14513-316e-413b-8669-a9462ede0b26.json
+      hash: md5
+      md5: 4ca060da0d811707d20dc703cae79605
+      size: 1624
+    - path: uploads/9e0bba8f-aad7-4e06-84d1-bc0499d43527.mp4
+      hash: md5
+      md5: b64bb5a53180dbdf5a25221442e07f52
+      size: 8808444
+    outs:
+    - path: static/results/output_with_heatmap_and_countsf.mp4
+      hash: md5
+      md5: 726f5e82cdd48db34f5250566c150149
+      size: 13478553
